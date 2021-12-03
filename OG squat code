@@ -1,0 +1,83 @@
+/* Sweep
+ by BARRAGAN <http://barraganstudio.com>
+ This example code is in the public domain.
+
+ modified 8 Nov 2013
+ by BOLT
+ http://www.arduino.cc/en/Tutorial/Sweep
+*/
+
+#include <Servo.h>
+
+Servo myservoBLL; 
+Servo myservoBRL;
+Servo myservoFLL; 
+Servo myservoFRL; 
+Servo myservoBLH; 
+Servo myservoFLH; 
+Servo myservoBRH; 
+Servo myservoFRH; 
+Servo myservoBLS; 
+Servo myservoFLS; 
+Servo myservoFRS; 
+Servo myservoBRS; 
+
+int pos = 0;    // variable to store the servo position
+int buttonval = HIGH;
+int buttonpin = 2;
+int buttonval1 = HIGH;
+
+void setup() {
+  myservoBLL.attach(45);
+  myservoBRL.attach(51);
+  myservoFLL.attach(47);
+  myservoFRL.attach(49);
+  myservoBLH.attach(39);
+  myservoFLH.attach(37);
+  myservoBRH.attach(43);
+  myservoFRH.attach(41);
+  myservoBLS.attach(31);
+  myservoFLS.attach(9);
+  myservoFRS.attach(35);
+  myservoBRS.attach(33);
+  pinMode(buttonpin, INPUT_PULLUP);
+  Serial.begin(9600);
+  myservoBLL.write(270);
+  myservoBRL.write(0);
+  myservoFLL.write(270);
+  myservoFRL.write(0);
+  myservoBLH.write(90);
+  myservoFLH.write(90);
+  myservoBRH.write(90);
+  myservoFRH.write(90);
+  myservoBLS.write(90);
+  myservoFLS.write(90);
+  myservoFRS.write(90);
+  myservoBRS.write(90);
+}
+
+void loop() {
+  buttonval = digitalRead(buttonpin);
+
+  if (buttonval == LOW){
+    Serial.println("Button Pressed");
+    myservoBRS.write(140);
+    myservoFRS.write(140);
+    myservoBLS.write(40);
+    myservoFLS.write(40);
+    myservoBRL.write(70);
+    myservoFRL.write(70);
+    myservoBLL.write(110);
+    myservoFLL.write(110);
+    delay(3000);
+    myservoBRS.write(90);
+    myservoFRS.write(90);
+    myservoBLS.write(90);
+    myservoFLS.write(90);
+    myservoBRL.write(0);
+    myservoFRL.write(0);
+    myservoBLL.write(270);
+    myservoFLL.write(270);
+    delay(3000);
+  }
+}
