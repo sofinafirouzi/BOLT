@@ -63,57 +63,48 @@ void loop() {
   if (buttonval == LOW){
     Serial.println("Button Pressed");
 
-    for (int x = 90; x < 140; x+=5){
-     int y = x-85;
-     if(y<40){
+    for (int x = 0; x < 70; x+=1){
+     int y = 90-.714*x;
+     int z = .714*x+90;
+     int k = 180-x;
+     
+     if(y>40){
       myservoBLS.write(y);
       myservoFLS.write(y);
      }
-     myservoBRS.write(x);
-     myservoFRS.write(x);
+     if(z<140){
+      myservoFRS.write(z);
+      myservoBRS.write(z);
+     }
+     if(k>110){
+      myservoBLL.write(k);
+      myservoFLL.write(k);
+     }
+     myservoBRL.write(x);
+     myservoFRL.write(x);
      delay(degreedelay);
     }
-    
-   //for (int x = 5; x < 40; x+=5){
-     // myservoBLS.write(x);
-    //  myservoFLS.write(x);
-    //   delay(degreedelay);
-   // }
-    
-//
-// for (int x = 5; x < 70; x+=5){
-//       myservoBRL.write(x);
-//       myservoFRL.write(x);
-//        delay(degreedelay);
-//    }
-//    for (int x = 5; x < 110; x+=5){
-//       myservoBLL.write(x);
-//       myservoFLL.write(x);
-//        delay(degreedelay);
-//    }
-//
-//    delay(3000);
-//    
-//   for (int x = 5; x < 90; x+=5){
-//       myservoBRS.write(x);
-//       myservoFRS.write(x);
-//        myservoBLS.write(x);
-//       myservoFLS.write(x);
-//        delay(degreedelay);
-//       
-//    } 
-//     for (int x = 70; x > 0; x-=5){
-//       myservoBRL.write(x);
-//       myservoFRL.write(x);
-//        delay(degreedelay);
-//    }
-// 
-// 
-//    for (int x = 5; x < 270; x+=5){
-//       myservoBLL.write(x);
-//       myservoFLL.write(x);
-//        delay(degreedelay);
-//    }
-//    delay(3000);
+     delay(2000);
+     for (int q = 70; q > 0; q-=1){
+     int h = 90-.714*q;
+     int w = 90+.714*q;
+     int v = 180-q;
+     
+     if(h<90){
+      myservoBLS.write(h);
+      myservoFLS.write(h);
+     }
+     if(w>90){
+      myservoFRS.write(w);
+      myservoBRS.write(w);
+     }
+     if(v<180){
+      myservoBLL.write(v);
+      myservoFLL.write(v);
+     }
+     myservoBRL.write(q);
+     myservoFRL.write(q);
+     delay(degreedelay);
+    }
   }
 }
