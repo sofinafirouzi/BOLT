@@ -1,1 +1,27 @@
+#include <Servo.h>
 
+Servo myservo0;
+
+int pos = 0; 
+int buttonval = HIGH;
+int buttonpin = 2;
+int buttonval1 = HIGH;
+
+void setup() {
+  myservo0.attach(9);
+  pinMode(buttonpin, INPUT_PULLUP);
+  Serial.begin(9600);
+  myservo0.write(270);
+}
+
+void loop(){
+  buttonval = digitalRead (buttonpin);
+  
+  if (buttonval == LOW){
+    Serial.println("Button Pressed");
+    myservo0.write(0);
+    delay(2000);
+    myservo0.write(270); 
+    delay(2000);
+  }
+}
