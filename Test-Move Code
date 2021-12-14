@@ -1,1 +1,115 @@
+/* Sweep
+ by BARRAGAN <http://barraganstudio.com>
+ This example code is in the public domain.
 
+ modified 8 Nov 2013
+ by BOLT
+ http://www.arduino.cc/en/Tutorial/Sweep
+*/
+
+#include <Servo.h>
+
+Servo myservo0; 
+Servo myservo1;
+Servo myservo2; 
+Servo myservo3; 
+Servo myservo4; 
+Servo myservo5; 
+Servo myservo6; 
+Servo myservo7; 
+Servo myservo8; 
+Servo myservo9; 
+Servo myservo10; 
+Servo myservo11; 
+
+int pos = 0;
+int buttonval = HIGH;
+int buttonpin = 2;
+int buttonval1 = HIGH;
+
+void setup() {
+  myservo0.attach(45);
+  myservo1.attach(51);
+  myservo2.attach(47);
+  myservo3.attach(49);
+  myservo4.attach(39);
+  myservo5.attach(37);
+  myservo6.attach(43);
+  myservo7.attach(41);
+  myservo8.attach(31);
+  myservo9.attach(9);
+  myservo10.attach(35);
+  myservo11.attach(33);
+  pinMode(buttonpin, INPUT_PULLUP);
+  Serial.begin(9600);
+  myservo0.write(270);
+  myservo1.write(0);
+  myservo2.write(270);
+  myservo3.write(0);
+  myservo4.write(90);
+  myservo5.write(90);
+  myservo6.write(90);
+  myservo7.write(90);
+  myservo8.write(90);
+  myservo9.write(90);
+  myservo10.write(90);
+  myservo11.write(90);
+}
+
+void loop() {
+  buttonval = digitalRead(buttonpin);
+
+  if (buttonval == LOW){
+    Serial.println("Button Pressed");
+    myservo0.write(70); //Start of leg code
+    myservo1.write(110);
+    myservo2.write(70);
+    myservo3.write(110);
+    delay(2000);
+    myservo0.write(270);
+    myservo1.write(0);
+    myservo2.write(270);
+    myservo3.write(0);
+    delay(2000);
+    myservo0.write(70); //Legs go up
+    myservo1.write(110);
+    myservo2.write(70);
+    myservo3.write(110);
+    delay(2000);
+    myservo4.write(70); //Start of hip code
+    myservo5.write(70);
+    myservo6.write(110);
+    myservo7.write(110);
+    delay(2000);
+    myservo4.write(110);
+    myservo5.write(110);
+    myservo6.write(70);
+    myservo7.write(70);
+    delay(2000);
+    myservo4.write(90);
+    myservo5.write(90);
+    myservo6.write(90);
+    myservo7.write(90);
+    delay(2000); 
+    myservo8.write(50); //Start of shoulder code
+    myservo9.write(50);
+    myservo10.write(130);
+    myservo11.write(130);
+    delay(2000);
+    myservo8.write(130);
+    myservo9.write(130);
+    myservo10.write(50);
+    myservo11.write(50);
+    delay(2000);
+    myservo8.write(90);
+    myservo9.write(90);
+    myservo10.write(90);
+    myservo11.write(90);
+    delay(2000); 
+    myservo0.write(270); //Legs go up
+    myservo1.write(0);
+    myservo2.write(270);
+    myservo3.write(0);
+    delay(2000);
+  }
+}
